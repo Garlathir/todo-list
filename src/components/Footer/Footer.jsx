@@ -18,9 +18,9 @@ function Footer({ count, filter, changeFilter, clearCompleted }) {
 
 Footer.propTypes = {
   count: PropTypes.number,
+  filter: PropTypes.string,
   clearCompleted: PropTypes.func.isRequired,
   changeFilter: PropTypes.func.isRequired,
-  filter: PropTypes.string,
 }
 
 Footer.defaultProps = {

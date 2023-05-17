@@ -23,26 +23,24 @@ class NewTaskForm extends React.Component {
   }
 
   render() {
-    const { title, placeholder } = this.props
     const { label } = this.state
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>{title}</h1>
-        <input type="text" onChange={this.onLabelChange} value={label} className="new-todo" placeholder={placeholder} />
+        <h1>Todos</h1>
+        <input
+          type="text"
+          onChange={this.onLabelChange}
+          value={label}
+          className="new-todo"
+          placeholder="What needs to be done?"
+        />
       </form>
     )
   }
 }
 
 NewTaskForm.propTypes = {
-  placeholder: PropTypes.string,
-  title: PropTypes.string,
   addItem: PropTypes.func.isRequired,
-}
-
-NewTaskForm.defaultProps = {
-  placeholder: 'What needs to be done?',
-  title: 'Todos',
 }
 
 export default NewTaskForm

@@ -25,6 +25,7 @@
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
+    "no-param-reassign": 0,
     "no-plusplus": 0,
     "indent": ["error", 2],
     "prettier/prettier": "error",

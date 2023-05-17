@@ -35,42 +35,38 @@ class App extends React.Component {
     }
   }
 
-  /* eslint-disable no-param-reassign */
-
   toggleDone = (ident, data) => {
     this.setState(({ todoData }) => {
-      const copyArray = [...todoData].map((element) => {
+      const resultArray = todoData.map((element) => {
         if (ident === element.id) {
           element.completed = data
         }
         return element
       })
-      return { todoData: copyArray }
+      return { todoData: resultArray }
     })
   }
 
   toggleEdit = (ident) => {
     this.setState(({ todoData }) => {
-      const copyArray = [...todoData].map((element) => {
+      const resultArray = todoData.map((element) => {
         if (ident === element.id) element.edit = !element.edit
         return element
       })
-      return { todoData: copyArray }
+      return { todoData: resultArray }
     })
   }
 
   editItem = (ident, e) => {
     const renameTask = e.target.value
     this.setState(({ todoData }) => {
-      const copyArray = [...todoData].map((todo) => {
+      const resultArray = todoData.map((todo) => {
         if (ident === todo.id) todo.label = renameTask
         return todo
       })
-      return { todoData: copyArray }
+      return { todoData: resultArray }
     })
   }
-
-  /* eslint-enable no-param-reassign */
 
   changeFilter = (data) => {
     this.setState({ filter: data })
@@ -78,8 +74,8 @@ class App extends React.Component {
 
   clearCompleted = () => {
     this.setState(({ todoData }) => {
-      const copyArray = [...todoData].filter((todo) => !todo.completed)
-      return { todoData: copyArray }
+      const resultArray = todoData.filter((todo) => !todo.completed)
+      return { todoData: resultArray }
     })
   }
 
@@ -115,7 +111,7 @@ class App extends React.Component {
     const { todoData, filter } = this.state
     return (
       <div className="todoapp">
-        <NewTaskForm title="Todos" placeholder="What needs to be done?" addItem={this.addItem} />
+        <NewTaskForm addItem={this.addItem} />
         <TaskList
           todoData={this.filteredItems()}
           deleteItem={this.deleteItem}
@@ -126,9 +122,9 @@ class App extends React.Component {
         />
         <Footer
           count={todoData.filter(({ completed }) => !completed).length}
+          filter={filter}
           changeFilter={this.changeFilter}
           clearCompleted={this.clearCompleted}
-          filter={filter}
         />
       </div>
     )

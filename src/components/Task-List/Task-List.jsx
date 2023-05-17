@@ -10,15 +10,13 @@ function TaskList({ todoData, deleteItem, toggleDone, toggleEdit, editItem, onEd
     <ul className="todo-list">
       {todoData.map((todo) => (
         <Task
-          key={todo.id}
-          toggleDone={toggleDone}
-          editItem={editItem}
-          toggleEdit={() => toggleEdit(todo.id)}
           deleteItem={() => deleteItem(todo.id)}
+          toggleDone={toggleDone}
+          toggleEdit={() => toggleEdit(todo.id)}
+          editItem={editItem}
           onEditSubmit={onEditSubmit}
+          key={todo.id}
           todo={todo}
-          date={todo.date}
-          edit={todo.edit}
         />
       ))}
     </ul>
@@ -26,6 +24,15 @@ function TaskList({ todoData, deleteItem, toggleDone, toggleEdit, editItem, onEd
 }
 
 TaskList.propTypes = {
+  todoData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      label: PropTypes.string,
+      completed: PropTypes.bool,
+      edit: PropTypes.bool,
+      date: PropTypes.instanceOf(Date),
+    })
+  ),
   deleteItem: PropTypes.func.isRequired,
   toggleDone: PropTypes.func.isRequired,
   toggleEdit: PropTypes.func.isRequired,
@@ -33,6 +40,8 @@ TaskList.propTypes = {
   onEditSubmit: PropTypes.func.isRequired,
 }
 
-TaskList.defaultProps = {}
+TaskList.defaultProps = {
+  todoData: [],
+}
 
 export default TaskList

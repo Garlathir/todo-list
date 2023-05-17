@@ -5,8 +5,6 @@ import KG from 'date-fns/locale/en-AU'
 
 import './Task.css'
 
-// const CreationTime = formatDistance(subDays(new Date(), 3), new Date());
-
 function Task({ todo, deleteItem, toggleDone, toggleEdit, editItem, onEditSubmit }) {
   const { label, id, completed, date, edit } = todo
   let classNames = ''
@@ -58,7 +56,9 @@ Task.propTypes = {
   }),
   deleteItem: PropTypes.func.isRequired,
   toggleDone: PropTypes.func.isRequired,
+  toggleEdit: PropTypes.func.isRequired,
   editItem: PropTypes.func.isRequired,
+  onEditSubmit: PropTypes.func.isRequired,
 }
 
 Task.defaultProps = {
