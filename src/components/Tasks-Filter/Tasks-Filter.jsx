@@ -6,7 +6,11 @@ function TasksFilter({ filter, changeFilter }) {
   return (
     <ul className="filters">
       <li>
-        <button type="button" onClick={() => changeFilter('All')} className={filter === 'All' ? 'selected' : null}>
+        <button
+          type="button"
+          onClick={() => changeFilter('All')}
+          className={filter === 'All' ? 'selected' : null}
+        >
           All
         </button>
       </li>

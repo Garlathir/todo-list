@@ -25,16 +25,31 @@ class NewTaskForm extends React.Component {
   render() {
     const { label } = this.state
     return (
-      <form onSubmit={this.onSubmit}>
+      <header className="header">
         <h1>Todos</h1>
-        <input
-          type="text"
-          onChange={this.onLabelChange}
-          value={label}
-          className="new-todo"
-          placeholder="What needs to be done?"
-        />
-      </form>
+        <form
+          className="new-todo-form"
+          onSubmit={this.onSubmit}
+        >
+          <input
+            type="text"
+            onChange={this.onLabelChange}
+            value={label}
+            className="new-todo"
+            placeholder="Task"
+          />
+          {/* <input
+            type="text"
+            className="new-todo-form__timer"
+            placeholder="Min"
+          />
+          <input
+            type="text"
+            className="new-todo-form__timer"
+            placeholder="Sec"
+          /> */}
+        </form>
+      </header>
     )
   }
 }

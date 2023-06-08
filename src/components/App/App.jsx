@@ -110,23 +110,25 @@ class App extends React.Component {
   render() {
     const { todoData, filter } = this.state
     return (
-      <div className="todoapp">
+      <section className="todoapp">
         <NewTaskForm addItem={this.addItem} />
-        <TaskList
-          todoData={this.filteredItems()}
-          deleteItem={this.deleteItem}
-          toggleDone={this.toggleDone}
-          toggleEdit={this.toggleEdit}
-          editItem={this.editItem}
-          onEditSubmit={this.onEditSubmit}
-        />
-        <Footer
-          count={todoData.filter(({ completed }) => !completed).length}
-          filter={filter}
-          changeFilter={this.changeFilter}
-          clearCompleted={this.clearCompleted}
-        />
-      </div>
+        <section className="main">
+          <TaskList
+            todoData={this.filteredItems()}
+            deleteItem={this.deleteItem}
+            toggleDone={this.toggleDone}
+            toggleEdit={this.toggleEdit}
+            editItem={this.editItem}
+            onEditSubmit={this.onEditSubmit}
+          />
+          <Footer
+            count={todoData.filter(({ completed }) => !completed).length}
+            filter={filter}
+            changeFilter={this.changeFilter}
+            clearCompleted={this.clearCompleted}
+          />
+        </section>
+      </section>
     )
   }
 }
