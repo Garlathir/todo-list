@@ -8,8 +8,15 @@ function Footer({ count, filter, changeFilter, clearCompleted }) {
   return (
     <footer className="footer">
       <span className="todo-count">{count} items left</span>
-      <TasksFilter filter={filter} changeFilter={changeFilter} />
-      <button type="button" className="clear-completed" onClick={clearCompleted}>
+      <TasksFilter
+        filter={filter}
+        changeFilter={changeFilter}
+      />
+      <button
+        type="button"
+        className="clear-completed"
+        onClick={clearCompleted}
+      >
         Clear completed
       </button>
     </footer>

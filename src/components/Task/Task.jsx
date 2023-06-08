@@ -15,34 +15,59 @@ function Task({ todo, deleteItem, toggleDone, toggleEdit, editItem, onEditSubmit
     classNames = 'editing'
   }
   return (
-    <div>
-      <li className={classNames}>
-        <div className="view">
-          <input
-            id={id}
-            className="toggle"
-            type="checkbox"
-            onChange={(e) => toggleDone(id, e.target.checked)}
-            checked={completed}
-          />
-          <label htmlFor={id}>
-            <span className="description">{label}</span>
-            <span className="created">{`created ${formatDistanceToNow(date, {
-              includeSeconds: true,
-              locale: KG,
-              addSuffix: true,
-            })}`}</span>
-          </label>
-          <button type="button" className="icon icon-edit" onClick={toggleEdit} aria-label="Edit" />
-          <button type="button" className="icon icon-destroy" onClick={deleteItem} aria-label="Delete" />
-        </div>
-      </li>
+    <li className={classNames}>
+      <div className="view">
+        <input
+          id={id}
+          className="toggle"
+          type="checkbox"
+          onChange={(e) => toggleDone(id, e.target.checked)}
+          checked={completed}
+        />
+        <label htmlFor={id}>
+          <span className="title">{label}</span>
+          <span className="description">
+            <button
+              aria-label="Play"
+              type="button"
+              className="icon icon-play"
+            />
+            <button
+              aria-label="Pause"
+              type="button"
+              className="icon icon-pause"
+            />
+          </span>
+          <span className="description">{`created ${formatDistanceToNow(date, {
+            includeSeconds: true,
+            locale: KG,
+            addSuffix: true,
+          })}`}</span>
+        </label>
+        <button
+          type="button"
+          className="icon icon-edit"
+          onClick={toggleEdit}
+          aria-label="Edit"
+        />
+        <button
+          type="button"
+          className="icon icon-destroy"
+          onClick={deleteItem}
+          aria-label="Delete"
+        />
+      </div>
       {edit && (
         <form onSubmit={(e) => onEditSubmit(id, e)}>
-          <input type="text" className="edit" value={label} onChange={(e) => editItem(id, e)} />
+          <input
+            type="text"
+            className="edit"
+            value={label}
+            onChange={(e) => editItem(id, e)}
+          />
         </form>
       )}
-    </div>
+    </li>
   )
 }
 
